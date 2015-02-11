@@ -11,7 +11,7 @@ var UserModel = Backbone.Model.extend({
 var userModel = new UserModel({
 	user: 'danny',
 	first_name: 'Bob',
-	last_name: 'Mahoney'
+	last_name: 'Mahoney',
 	email: 'Bob@Mahoneys.com',
 	birthday: new Date("May 23, 1988")
 });
