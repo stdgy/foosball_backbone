@@ -33,6 +33,7 @@ var UserView = Backbone.View.extend({
 
 	initialize: function(){
 		this.$el = $("#user");
+		this.model.on('change', this.render, this);
 	},
 
 	render: function(){
