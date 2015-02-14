@@ -45,8 +45,9 @@ var UserView = Backbone.View.extend({
 
 	},
 
-	updateFirstName: function(){
-
+	updateFirstName: function(e){
+		console.log(e);
+		// Set model value with silent passed in
 	},
 
 	updateLastName: function(){
