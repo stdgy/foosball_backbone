@@ -1,6 +1,6 @@
 var UserModel = Backbone.Model.extend({
 	defaults: {
-		user: 'name',
+	    name: 'name',
 		first_name: '',
 		last_name: '',
 		email: '',
@@ -9,7 +9,7 @@ var UserModel = Backbone.Model.extend({
 });
 
 var userModel = new UserModel({
-	user: 'danny',
+	name: 'danny',
 	first_name: 'Bob',
 	last_name: 'Mahoney',
 	email: 'Bob@Mahoneys.com',
@@ -64,3 +64,11 @@ var UserView = Backbone.View.extend({
 });
 
 var userView = new UserView({ model: userModel });
+
+var UserCollection = Backbone.Collection.extend({
+	model: UserModel,
+	url: '/users'
+});
+
+var userCollection = new UserCollection();
+userCollection.fetch();
