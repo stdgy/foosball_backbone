@@ -1,7 +1,7 @@
 var app = app || {};
 
 app.UserRow = Backbone.View.extend({
-	tagName: 'tr',
+	tagName: 'table',
 
 	template: null,
 
@@ -10,7 +10,8 @@ app.UserRow = Backbone.View.extend({
 	},
 
 	initialize: function(){
-
+        // Re-render table when collection changes
+        app.users.on('change', this.render, this);
 	},
 
 	render: function(){
