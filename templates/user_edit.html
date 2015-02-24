@@ -5,35 +5,35 @@
 				<h3 class="panel-title">User Edit</h3>
 			</div>
 			<div class="panel-body">
-				<form class="form-horizontal">
+				<form class="form-horizontal save-form">
 					<div class="form-group">
 						<label for="inputName" class="col-sm-3 control-label">Name</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="inputName" placeholder="Nick" value="<%- name %>">
+							<input type="text" class="form-control name" id="inputName" placeholder="Nick" value="<%- data.name %>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="firstName" class="col-sm-3 control-label">First Name</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="firstName" placeholder="Randy" value="<%- first_name %>">
+							<input type="text" class="form-control first-name" id="firstName" placeholder="Randy" value="<%- data.first_name %>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="lastName" class="col-sm-3 control-label">Last Name</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="lastName" placeholder="Marsh" value="<%- last_name %>">
+							<input type="text" class="form-control last-name" id="lastName" placeholder="Marsh" value="<%- data.last_name %>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="birthday" class="col-sm-3 control-label">Birthday</label>
 						<div class="col-sm-9">
-							<input type="date" class="form-control" id="birthday" placeholder="05/25/88" value="<%- birthday %>">
+							<input type="date" class="form-control birthday" id="birthday" placeholder="05/25/88" value="<%- data.birthday %>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputEmail" class="col-sm-3 control-label">Email</label>
 						<div class="col-sm-9">
-							<input type="email" class="form-control" id="inputEmail" placeholder="example@site.com" value="<%- email %>">
+							<input type="email" class="form-control email" id="inputEmail" placeholder="example@site.com" value="<%- data.email %>">
 						</div>
 					</div>
 					<button type="submit" class="btn btn-default">Save</button>

@@ -16,12 +16,20 @@ var FoosballRouter = Backbone.Router.extend({
 		"games/create": "createGame"
 	},
 
-	showUsers: function(){
+	removeCurrentView: function(){
+		app.currentView && app.currentView.remove();
+	},
 
+	showUsers: function(){
+		// Remove current view and go to new view 
+		this.removeCurrentView();
+		app.userView = new app.UserView();
 	},
 
 	showUser: function(id){
-
+		// Remove current view and go to new view 
+		this.removeCurrentView();
+		app.userEdit = new app.UserEdit({ model: _.first(app.users.where({ 'id': parseInt(id, 10) })) });
 	},
 
 	createUser: function(){

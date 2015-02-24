@@ -5,7 +5,7 @@ app.UserTable = Backbone.View.extend({
 
     className: 'table table-striped',
 
-	template: null,
+	template: $('#user-table-template').html(),
 
 	events: {
 
@@ -14,15 +14,17 @@ app.UserTable = Backbone.View.extend({
 	initialize: function(){
         // Re-render table when collection changes
         this.listenTo(app.users, 'add', this.render);
+        this.$el.html(this.template);
+        this.$tbody = this.$el.find('tbody');
 	},
 
 	render: function(){
         // Remove existing rows
-        this.$el.html('');
+        this.$tbody.html('');
         // Add new rows
         app.users.each(function(user){
             var rowView = new app.UserRow({ model: user });
-            this.$el.append( rowView.render().el );
+            this.$tbody.append( rowView.render().el );
         }, this);
 
 		return this;

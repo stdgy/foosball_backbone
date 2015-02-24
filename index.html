@@ -3,22 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
-<div id="header"></div>
+<div id="header">
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">FoosTracker</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Users <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#users">
+                    <span class="glyphicon glyphicon-th-list"></span> List Users</a></li>
+                <li><a href="/users/create">
+                    <span class="glyphicon glyphicon-pencil"></span> Create User</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Games <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/games">
+                    <span class="glyphicon glyphicon-th-list"></span> List Games</a></li>
+                <li><a href="/games/create">
+                    <span class="glyphicon glyphicon-pencil"></span> Create Game</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+</div>
 <div id="body"></div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
 <script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
 <script id="user-row-template" type="text/template">
     <td>
-        <%- data.name %>
+        <a href="#users/<%- data.id %>">
+            <%- data.name %>
+        </a>
     </td>
     <td><%- data.first_name %></td>
     <td><%- data.last_name %></td>
     <td><%- data.email %></td>
     <td><%- data.birthday %></td>
+</script>
+<script id="user-table-template" type="text/template">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Birthday</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
 </script>
 <script id="user-list-template" type="text/template">
     <div class="col-md-offset-2 col-md-8">
@@ -33,11 +87,59 @@
         </div>
     </div>
 </script>
+<script id="user-edit-template" type="text/template">
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">User Edit</h3>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal save-form">
+                        <div class="form-group">
+                            <label for="inputName" class="col-sm-3 control-label">Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control name" id="inputName" placeholder="Nick" value="<%- data.name %>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="firstName" class="col-sm-3 control-label">First Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control first-name" id="firstName" placeholder="Randy" value="<%- data.first_name %>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control last-name" id="lastName" placeholder="Marsh" value="<%- data.last_name %>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="birthday" class="col-sm-3 control-label">Birthday</label>
+                            <div class="col-sm-9">
+                                <input type="date" class="form-control birthday" id="birthday" placeholder="05/25/88" value="<%- data.birthday %>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-sm-3 control-label">Email</label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control email" id="inputEmail" placeholder="example@site.com" value="<%- data.email %>">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-default">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
 <script src="js/models/user.js"></script>
 <script src="js/views/users_view.js"></script>
 <script src="js/views/user_table.js"></script>
 <script src="js/views/user_row.js"></script>
+<script src="js/views/UserEdit.js"></script>
 <script src="js/collections/users.js"></script>
+<script src="js/routers/router.js"></script>
 <script src="app.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </body>
