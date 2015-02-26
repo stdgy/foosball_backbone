@@ -26,16 +26,22 @@ app.UserEdit = Backbone.View.extend({
 		return this;
 	},
 
-    saveValue: function(){
+    saveValues: function(){
+        // Collect values from view
         var values = {
             name: this.$el.find('.name').val(),
-            first_name: this.$el.find('first-name').val(),
-            last_name: this.$el.find('last-name').val(),
-            email: this.$el.find('email').val(),
-            birthday: this.$el.find('birthday').val()
+            first_name: this.$el.find('.first-name').val(),
+            last_name: this.$el.find('.last-name').val(),
+            email: this.$el.find('.email').val(),
+            birthday: this.$el.find('.birthday').val()
         };
 
         // Update model with new values
         this.model.set(values);
+
+        // Go back to user list 
+        app.FoosballRouter.navigate('users', { trigger: true });
+
+        return false;
     }
 });
