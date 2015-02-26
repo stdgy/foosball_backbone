@@ -13,7 +13,8 @@ app.UserTable = Backbone.View.extend({
 
 	initialize: function(){
         // Re-render table when collection changes
-        this.listenTo(app.users, 'add', this.render);
+        this.listenTo(this.collection, 'add', this.render);
+        this.listenTo(this.collection, 'change', this.render);
         this.$el.html(this.template);
         this.$tbody = this.$el.find('tbody');
 	},
@@ -22,7 +23,7 @@ app.UserTable = Backbone.View.extend({
         // Remove existing rows
         this.$tbody.html('');
         // Add new rows
-        app.users.each(function(user){
+        this.collection.each(function(user){
             var rowView = new app.UserRow({ model: user });
             this.$tbody.append( rowView.render().el );
         }, this);

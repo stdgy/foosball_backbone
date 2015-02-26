@@ -5,9 +5,9 @@ var FoosballRouter = Backbone.Router.extend({
 	routes: {
 		"users": "showUsers",
 
-		"users/:id": "showUser",
-
 		"users/create": "createUser",
+
+		"users/:id": "showUser",
 
 		"games": "showGames",
 
@@ -23,7 +23,7 @@ var FoosballRouter = Backbone.Router.extend({
 	showUsers: function(){
 		// Remove current view and go to new view 
 		this.removeCurrentView();
-		app.userView = new app.UserView();
+		app.userView = new app.UserView({ collection: app.users });
 	},
 
 	showUser: function(id){
@@ -33,7 +33,9 @@ var FoosballRouter = Backbone.Router.extend({
 	},
 
 	createUser: function(){
-
+		// Remvoe curren tview and go to new view 
+		this.removeCurrentView();
+		new app.UserCreate({ model: new app.UserModel() });
 	},
 
 	showGames: function(){
