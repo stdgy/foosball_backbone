@@ -133,6 +133,93 @@
         </div>
     </div>
 </script>
+<script id="game-create-template" type="text/template">
+    <div class="row">
+        <form action="/games/create" method="POST" class="form-horizontal" role="form">
+            <div class="col-md-2 col-md-offset-3">
+                <h3>Team 1</h3>
+                <div class="form-group">
+                    <label for="team1-name">Name</label> 
+                    <input class="form-control" id="team1-name" type="text" name="team1-name" 
+                            placeholder="Enter Name" value="Red" readonly />
+                </div>
+                <div class="form-group">
+                    <label for="team1-position1">Goalie</label> 
+                    <select id="team1-position1" class="form-control" name="team1-position1">
+                        <% data.users.each(function(user){ %>
+                            <option value="<%= user.id %>"><%= user.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="team1-position1">Defender</label> 
+                    <select id="team1-position1" class="form-control" name="team1-position2">
+                        <% data.users.each(function(user){ %>
+                            <option value="<%= user.id %>"><%= user.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="team1-position1">Center</label> 
+                    <select id="team1-position1" class="form-control" name="team1-position3">
+                        <% data.users.each(function(user){ %>
+                            <option value="<%= user.id %>"><%= user.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="team1-position1">Striker</label> 
+                    <select id="team1-position1" class="form-control" name="team1-position4">
+                        <% data.users.each(function(user){ %>
+                            <option value="<%= user.id %>"><%= user.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2 col-md-offset-1">
+                <h3>Team 2</h3>
+                <div class="form-group">
+                    <label for="team2-name">Name</label> 
+                    <input class="form-control" id="team2-name" type="text" name="team2-name" 
+                            placeholder="Enter Name" value="Blue" readonly />
+                </div>
+                <div class="form-group">
+                    <label for="team2-position1">Goalie</label> 
+                    <select id="team2-position1" class="form-control" name="team2-position1">
+                        <% data.users.each(function(user){ %>
+                            <option value="<%= user.id %>"><%= user.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="team2-position1">Defender</label> 
+                    <select id="team2-position1" class="form-control" name="team2-position2">
+                        <% data.users.each(function(user){ %>
+                            <option value="<%= user.id %>"><%= user.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="team2-position1">Center</label> 
+                    <select id="team2-position1" class="form-control" name="team2-position3">
+                        <% data.users.each(function(user){ %>
+                            <option value="<%= user.id %>"><%= user.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="team2-position1">Striker</label> 
+                    <select id="team2-position1" class="form-control" name="team2-position4">
+                        <% data.users.each(function(user){ %>
+                            <option value="<%= user.id %>"><%= user.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        <form>
+    </div>
+</script>
 <script src="js/models/user.js"></script>
 <script src="js/views/users_view.js"></script>
 <script src="js/views/user_table.js"></script>

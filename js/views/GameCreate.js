@@ -18,7 +18,7 @@ app.GameCreate = Backbone.View.extend({
 	},
 
 	render: function(){
-        this.$el.html( this.template({ data: this.model.attributes }) );
+        this.$el.html( this.template({ data: { users: this.collection } }) );
         
 		return this;
 	},
