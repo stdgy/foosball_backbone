@@ -10,8 +10,11 @@ app.GameCreate = Backbone.View.extend({
 	},
 
 	initialize: function(){
-        // Re-render table when collection changes
-        //this.listenTo(this.model, 'change', this.render);
+        // Create game model we'll be creating 
+
+        // Attach to the game model's request and sync event
+
+        // Render the view
         this.$body = $("#body");
         this.$body.html(this.el);
         this.render();
@@ -23,21 +26,14 @@ app.GameCreate = Backbone.View.extend({
 		return this;
 	},
 
+    parseValues: function(){
+
+    },
+
     createGame: function(){
-        // Collect values from view
-        var values = {
-            name: this.$el.find('.name').val(),
-            first_name: this.$el.find('.first-name').val(),
-            last_name: this.$el.find('.last-name').val(),
-            email: this.$el.find('.email').val(),
-            birthday: this.$el.find('.birthday').val()
-        };
+        // Create new game model with values from view
 
-        // Update model with new values
-        this.model.set(values);
-
-        // Add model to collection
-        app.users.add(this.model);
+        // Save game
 
         // Forward on to list of users
         app.FoosballRouter.navigate('users', { trigger: true });
