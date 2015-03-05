@@ -35,9 +35,9 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Games <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="/games">
+                <li><a href="#games">
                     <span class="glyphicon glyphicon-th-list"></span> List Games</a></li>
-                <li><a href="/games/create">
+                <li><a href="#games/create">
                     <span class="glyphicon glyphicon-pencil"></span> Create Game</a></li>
               </ul>
             </li>
@@ -147,31 +147,31 @@
                     <label for="team1-position1">Goalie</label> 
                     <select id="team1-position1" class="form-control" name="team1-position1">
                         <% data.users.each(function(user){ %>
-                            <option value="<%= user.id %>"><%= user.name %></option>
+                            <option value="<%= user.id %>"><%= user.get('name') %></option>
                         <% }); %>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="team1-position1">Defender</label> 
-                    <select id="team1-position1" class="form-control" name="team1-position2">
+                    <label for="team1-position2">Defender</label> 
+                    <select id="team1-position2" class="form-control" name="team1-position2">
                         <% data.users.each(function(user){ %>
-                            <option value="<%= user.id %>"><%= user.name %></option>
+                            <option value="<%= user.id %>"><%= user.get('name') %></option>
                         <% }); %>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="team1-position1">Center</label> 
-                    <select id="team1-position1" class="form-control" name="team1-position3">
+                    <label for="team1-position3">Center</label> 
+                    <select id="team1-position3" class="form-control" name="team1-position3">
                         <% data.users.each(function(user){ %>
-                            <option value="<%= user.id %>"><%= user.name %></option>
+                            <option value="<%= user.id %>"><%= user.get('name') %></option>
                         <% }); %>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="team1-position1">Striker</label> 
-                    <select id="team1-position1" class="form-control" name="team1-position4">
+                    <label for="team1-position4">Striker</label> 
+                    <select id="team1-position4" class="form-control" name="team1-position4">
                         <% data.users.each(function(user){ %>
-                            <option value="<%= user.id %>"><%= user.name %></option>
+                            <option value="<%= user.id %>"><%= user.get('name') %></option>
                         <% }); %>
                     </select>
                 </div>
@@ -187,31 +187,31 @@
                     <label for="team2-position1">Goalie</label> 
                     <select id="team2-position1" class="form-control" name="team2-position1">
                         <% data.users.each(function(user){ %>
-                            <option value="<%= user.id %>"><%= user.name %></option>
+                            <option value="<%= user.id %>"><%= user.get('name') %></option>
                         <% }); %>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="team2-position1">Defender</label> 
-                    <select id="team2-position1" class="form-control" name="team2-position2">
+                    <label for="team2-position2">Defender</label> 
+                    <select id="team2-position2" class="form-control" name="team2-position2">
                         <% data.users.each(function(user){ %>
-                            <option value="<%= user.id %>"><%= user.name %></option>
+                            <option value="<%= user.id %>"><%= user.get('name') %></option>
                         <% }); %>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="team2-position1">Center</label> 
-                    <select id="team2-position1" class="form-control" name="team2-position3">
+                    <label for="team2-position3">Center</label> 
+                    <select id="team2-position3" class="form-control" name="team2-position3">
                         <% data.users.each(function(user){ %>
-                            <option value="<%= user.id %>"><%= user.name %></option>
+                            <option value="<%= user.id %>"><%= user.get('name') %></option>
                         <% }); %>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="team2-position1">Striker</label> 
-                    <select id="team2-position1" class="form-control" name="team2-position4">
+                    <label for="team2-position4">Striker</label> 
+                    <select id="team2-position4" class="form-control" name="team2-position4">
                         <% data.users.each(function(user){ %>
-                            <option value="<%= user.id %>"><%= user.name %></option>
+                            <option value="<%= user.id %>"><%= user.get('name') %></option>
                         <% }); %>
                     </select>
                 </div>
@@ -221,11 +221,13 @@
     </div>
 </script>
 <script src="js/models/user.js"></script>
+<script src="js/models/GameModel.js"></script>
 <script src="js/views/users_view.js"></script>
 <script src="js/views/user_table.js"></script>
 <script src="js/views/user_row.js"></script>
 <script src="js/views/UserEdit.js"></script>
 <script src="js/views/UserCreate.js"></script>
+<script src="js/views/GameCreate.js"></script>
 <script src="js/collections/users.js"></script>
 <script src="js/routers/router.js"></script>
 <script src="app.js"></script>

@@ -27,13 +27,78 @@ app.GameCreate = Backbone.View.extend({
 	},
 
     parseValues: function(){
+        var game = new app.GameModel();
 
+        game.set('teams', [
+            {   
+                name: $el.find('#team1-name').val(),
+                players: [ 
+                    {
+                        position: '1',
+                        user: {
+                            id: $el.find('#team1-position1').val()
+                        }
+                    },
+                    {
+                        position: '2',
+                        user: {
+                            id: $el.find('#team1-position2').val()
+                        }
+                    },
+                    {
+                        position: '3',
+                        user: {
+                            id: $el.find('#team1-position3').val()
+                        }
+                    },
+                    {
+                        position: '4',
+                        user: {
+                            id: $el.find('#team1-position4').val()
+                        }
+                    }
+                ]
+            },
+            {   
+                name: $el.find('#team2-name').val(),
+                players: [ 
+                    {
+                        position: '1',
+                        user: {
+                            id: $el.find('#team2-position1').val()
+                        }
+                    },
+                    {
+                        position: '2',
+                        user: {
+                            id: $el.find('#team2-position2').val()
+                        }
+                    },
+                    {
+                        position: '3',
+                        user: {
+                            id: $el.find('#team2-position3').val()
+                        }
+                    },
+                    {
+                        position: '4',
+                        user: {
+                            id: $el.find('#team2-position4').val()
+                        }
+                    }
+                ]
+            }
+        ]);
+        
+        return game;
     },
 
     createGame: function(){
         // Create new game model with values from view
+        var game = this.parseValues();
 
         // Save game
+        game.save();
 
         // Forward on to list of users
         app.FoosballRouter.navigate('users', { trigger: true });
