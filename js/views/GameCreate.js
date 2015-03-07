@@ -31,59 +31,59 @@ app.GameCreate = Backbone.View.extend({
 
         game.set('teams', [
             {   
-                name: $el.find('#team1-name').val(),
+                name: this.$el.find('#team1-name').val(),
                 players: [ 
                     {
                         position: '1',
                         user: {
-                            id: $el.find('#team1-position1').val()
+                            id: this.$el.find('#team1-position1').val()
                         }
                     },
                     {
                         position: '2',
                         user: {
-                            id: $el.find('#team1-position2').val()
+                            id: this.$el.find('#team1-position2').val()
                         }
                     },
                     {
                         position: '3',
                         user: {
-                            id: $el.find('#team1-position3').val()
+                            id: this.$el.find('#team1-position3').val()
                         }
                     },
                     {
                         position: '4',
                         user: {
-                            id: $el.find('#team1-position4').val()
+                            id: this.$el.find('#team1-position4').val()
                         }
                     }
                 ]
             },
             {   
-                name: $el.find('#team2-name').val(),
+                name: this.$el.find('#team2-name').val(),
                 players: [ 
                     {
                         position: '1',
                         user: {
-                            id: $el.find('#team2-position1').val()
+                            id: this.$el.find('#team2-position1').val()
                         }
                     },
                     {
                         position: '2',
                         user: {
-                            id: $el.find('#team2-position2').val()
+                            id: this.$el.find('#team2-position2').val()
                         }
                     },
                     {
                         position: '3',
                         user: {
-                            id: $el.find('#team2-position3').val()
+                            id: this.$el.find('#team2-position3').val()
                         }
                     },
                     {
                         position: '4',
                         user: {
-                            id: $el.find('#team2-position4').val()
+                            id: this.$el.find('#team2-position4').val()
                         }
                     }
                 ]
@@ -100,7 +100,7 @@ app.GameCreate = Backbone.View.extend({
         // Save game
         game.save();
 
-        // Forward on to list of users
+        // Forward on to game edit view
         app.FoosballRouter.navigate('users', { trigger: true });
 
         return false;
