@@ -6,7 +6,7 @@ app.GameCreate = Backbone.View.extend({
 	template: _.template($('#game-create-template').html()),
 
 	events: {
-        'submit': 'createGame'
+        'click .btn': 'createGame'
 	},
 
 	initialize: function(){
@@ -93,15 +93,19 @@ app.GameCreate = Backbone.View.extend({
         return game;
     },
 
-    createGame: function(){
+    createGame: function(event){
+        // Set button state
+        var $btn = $(event.target);
+        $btn.attr("disabled", "disabled").text("Saving...");
+
         // Create new game model with values from view
         var game = this.parseValues();
 
         // Save game
-        game.save();
+        //game.save();
 
         // Forward on to game edit view
-        app.FoosballRouter.navigate('users', { trigger: true });
+        //app.FoosballRouter.navigate('users', { trigger: true });
 
         return false;
     }
