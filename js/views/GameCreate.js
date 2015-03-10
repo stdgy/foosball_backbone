@@ -14,6 +14,8 @@ app.GameCreate = Backbone.View.extend({
 
         // Attach to the game model's request and sync event
 
+        app.currentView = this;
+
         // Render the view
         this.$body = $("#body");
         this.$body.html(this.el);
@@ -96,16 +98,22 @@ app.GameCreate = Backbone.View.extend({
     createGame: function(event){
         // Set button state
         var $btn = $(event.target);
-        $btn.attr("disabled", "disabled").text("Saving...");
+        $btn.prop("disabled", true).text("Saving...");
 
         // Create new game model with values from view
         var game = this.parseValues();
 
         // Save game
-        //game.save();
+        var jqxhr = game.save();
 
-        // Forward on to game edit view
-        //app.FoosballRouter.navigate('users', { trigger: true });
+        if (jqxhr === false){
+            // Validation failed.
+
+        } else {
+            // Validation succeeded. Go to the edit game screen.
+            app.currentView && app.currentView.remove();
+            app.currentView = new app.GameEdit({ model: game });
+        }
 
         return false;
     }

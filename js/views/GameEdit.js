@@ -10,6 +10,7 @@ app.GameEdit = Backbone.View.extend({
 	},
 
 	initialize: function(){
+        app.currentView = this;
         // Render the view
         this.$body = $("#body");
         this.$body.html(this.el);
