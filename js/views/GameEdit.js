@@ -18,7 +18,35 @@ app.GameEdit = Backbone.View.extend({
 	},
 
 	render: function(){
-        this.$el.html( this.template({ data: { users: this.collection } }) );
+        // Collect data into model we can send to template
+        var model = {
+            red_score_count: 0,
+            blue_score_count: 0,
+            positions: [
+                {   
+                    position: 'Goalie',
+                    red: {
+                        id: 0,
+                        score: 0,
+                        name: 'Terry'
+                    },
+                    blue: {
+                        id: 0,
+                        score: 0,
+                        name: 'Bob'
+                    }
+                }
+            ],
+            scores: [
+                {
+                    username: 'Ralph',
+                    time: 0,
+                    team: 'Red'
+                }
+            ]
+        };
+
+        this.$el.html( this.template({ data: model }) );
         
 		return this;
 	},
