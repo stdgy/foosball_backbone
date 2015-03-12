@@ -17,8 +17,8 @@ app.GameEdit = Backbone.View.extend({
         this.render();
 	},
 
-	render: function(){
-        // Collect data into model we can send to template
+    collectData: function(){
+        // Collect data into object we can send to template
         var model = {
             red_score_count: 0,
             blue_score_count: 0,
@@ -45,6 +45,15 @@ app.GameEdit = Backbone.View.extend({
                 }
             ]
         };
+
+        // Get score count for each team
+        var red_score_count = _.map(_.where(this.model.teams, { name: 'red' }), function(player){
+            
+        });
+    },
+
+	render: function(){
+        var model = this.collectData();        
 
         this.$el.html( this.template({ data: model }) );
         
