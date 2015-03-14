@@ -47,9 +47,33 @@ app.GameEdit = Backbone.View.extend({
         };
 
         // Get score count for each team
-        var red_score_count = _.map(_.where(this.model.teams, { name: 'red' }), function(player){
-            
-        });
+        var red_score_count = _.reduce(
+            _.map(
+                _.where(this.model.teams, { name: 'red' }).players, 
+                    function(player){
+                        return _.filter(player.scores, 
+                            function(score){
+                                // Return scores that are not own goals
+                                return !score.own_goal;
+                            });
+                    }), function(scores, scores){
+            return scores.concat(scores);
+        }).length;
+
+        var blue_score_count = _.reduce(
+            _.map(
+                _.where(this.model.teams, { name: 'blue' }).players, 
+                    function(player){
+                        return _.filter(player.scores, 
+                            function(score){
+                                // Return scores that are not own goals
+                                return !score.own_goal;
+                            });
+                    }), function(scores, scores){
+            return scores.concat(scores);
+        }).length;
+
+        var red_position = _.where(this.model.teams, { name: 'red' }).players;
     },
 
 	render: function(){
