@@ -145,7 +145,7 @@
                 </div>
                 <div class="form-group">
                     <label for="team1-position1">Goalie</label> 
-                    <select id="team1-position1" class="form-control" name="team1-position1">
+                    <select id="team1-position1" class="form-control" name="team1-position1" tabindex="1">
                         <% data.users.each(function(user){ %>
                             <option value="<%= user.id %>"><%= user.get('name') %></option>
                         <% }); %>
@@ -153,7 +153,7 @@
                 </div>
                 <div class="form-group">
                     <label for="team1-position2">Defender</label> 
-                    <select id="team1-position2" class="form-control" name="team1-position2">
+                    <select id="team1-position2" class="form-control" name="team1-position2" tabindex="1">
                         <% data.users.each(function(user){ %>
                             <option value="<%= user.id %>"><%= user.get('name') %></option>
                         <% }); %>
@@ -161,7 +161,7 @@
                 </div>
                 <div class="form-group">
                     <label for="team1-position3">Center</label> 
-                    <select id="team1-position3" class="form-control" name="team1-position3">
+                    <select id="team1-position3" class="form-control" name="team1-position3" tabindex="1">
                         <% data.users.each(function(user){ %>
                             <option value="<%= user.id %>"><%= user.get('name') %></option>
                         <% }); %>
@@ -169,7 +169,7 @@
                 </div>
                 <div class="form-group">
                     <label for="team1-position4">Striker</label> 
-                    <select id="team1-position4" class="form-control" name="team1-position4">
+                    <select id="team1-position4" class="form-control" name="team1-position4" tabindex="1">
                         <% data.users.each(function(user){ %>
                             <option value="<%= user.id %>"><%= user.get('name') %></option>
                         <% }); %>
@@ -185,7 +185,7 @@
                 </div>
                 <div class="form-group">
                     <label for="team2-position1">Goalie</label> 
-                    <select id="team2-position1" class="form-control" name="team2-position1">
+                    <select id="team2-position1" class="form-control" name="team2-position1" tabindex="1">
                         <% data.users.each(function(user){ %>
                             <option value="<%= user.id %>"><%= user.get('name') %></option>
                         <% }); %>
@@ -193,7 +193,7 @@
                 </div>
                 <div class="form-group">
                     <label for="team2-position2">Defender</label> 
-                    <select id="team2-position2" class="form-control" name="team2-position2">
+                    <select id="team2-position2" class="form-control" name="team2-position2" tabindex="1">
                         <% data.users.each(function(user){ %>
                             <option value="<%= user.id %>"><%= user.get('name') %></option>
                         <% }); %>
@@ -201,7 +201,7 @@
                 </div>
                 <div class="form-group">
                     <label for="team2-position3">Center</label> 
-                    <select id="team2-position3" class="form-control" name="team2-position3">
+                    <select id="team2-position3" class="form-control" name="team2-position3" tabindex="1">
                         <% data.users.each(function(user){ %>
                             <option value="<%= user.id %>"><%= user.get('name') %></option>
                         <% }); %>
@@ -209,7 +209,7 @@
                 </div>
                 <div class="form-group">
                     <label for="team2-position4">Striker</label> 
-                    <select id="team2-position4" class="form-control" name="team2-position4">
+                    <select id="team2-position4" class="form-control" name="team2-position4" tabindex="1">
                         <% data.users.each(function(user){ %>
                             <option value="<%= user.id %>"><%= user.get('name') %></option>
                         <% }); %>
@@ -247,7 +247,7 @@
                             <th class="text-center">Score</th>
                         </tr>
                     </thead>
-                    <% data.positions.each(function(position){ %>
+                    <% _.each(data.positions, function(position){ %>
                     <tr>
                         <td>
                             <button type="submit" class="btn btn-default btn-xs score-btn" data-id="<%- position.red_id %>">
@@ -290,7 +290,7 @@
                             <th>Team</th>
                     </thead>
                     <tbody>
-                        <% data.scores.each(function(score){ %>
+                        <% _.each(data.scores, function(score){ %>
                         <tr>
                             <td><%- score.username %></td>
                             <td><%- score.time %></td>
@@ -309,6 +309,7 @@
 <script src="js/views/user_table.js"></script>
 <script src="js/views/user_row.js"></script>
 <script src="js/views/UserEdit.js"></script>
+<script src="js/views/GameEdit.js"></script>
 <script src="js/views/UserCreate.js"></script>
 <script src="js/views/GameCreate.js"></script>
 <script src="js/collections/users.js"></script>
