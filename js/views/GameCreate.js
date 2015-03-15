@@ -36,28 +36,32 @@ app.GameCreate = Backbone.View.extend({
                 name: this.$el.find('#team1-name').val(),
                 players: [ 
                     {
-                        position: '1',
+                        position: 1,
                         user: {
-                            id: this.$el.find('#team1-position1').val()
-                        }
+                            id: parseInt(this.$el.find('#team1-position1').val(), 10)
+                        },
+                        scores: []
                     },
                     {
-                        position: '2',
+                        position: 2,
                         user: {
-                            id: this.$el.find('#team1-position2').val()
-                        }
+                            id: parseInt(this.$el.find('#team1-position2').val(), 10)
+                        },
+                        scores: []
                     },
                     {
-                        position: '3',
+                        position: 3,
                         user: {
-                            id: this.$el.find('#team1-position3').val()
-                        }
+                            id: parseInt(this.$el.find('#team1-position3').val(), 10)
+                        },
+                        scores: []
                     },
                     {
-                        position: '4',
+                        position: 4,
                         user: {
-                            id: this.$el.find('#team1-position4').val()
-                        }
+                            id: parseInt(this.$el.find('#team1-position4').val(), 10)
+                        },
+                        scores: []
                     }
                 ]
             },
@@ -65,28 +69,32 @@ app.GameCreate = Backbone.View.extend({
                 name: this.$el.find('#team2-name').val(),
                 players: [ 
                     {
-                        position: '1',
+                        position: 1,
                         user: {
-                            id: this.$el.find('#team2-position1').val()
-                        }
+                            id: parseInt(this.$el.find('#team2-position1').val(), 10)
+                        },
+                        scores: []
                     },
                     {
-                        position: '2',
+                        position: 2,
                         user: {
-                            id: this.$el.find('#team2-position2').val()
-                        }
+                            id: parseInt(this.$el.find('#team2-position2').val(), 10)
+                        },
+                        scores: []
                     },
                     {
-                        position: '3',
+                        position: 3,
                         user: {
-                            id: this.$el.find('#team2-position3').val()
-                        }
+                            id: parseInt(this.$el.find('#team2-position3').val(), 10)
+                        },
+                        scores: []
                     },
                     {
-                        position: '4',
+                        position: 4,
                         user: {
-                            id: this.$el.find('#team2-position4').val()
-                        }
+                            id: parseInt(this.$el.find('#team2-position4').val(), 10)
+                        },
+                        scores: []
                     }
                 ]
             }
@@ -103,6 +111,7 @@ app.GameCreate = Backbone.View.extend({
         // Create new game model with values from view
         var game = this.parseValues();
 
+        /*
         // Save game
         var jqxhr = game.save();
 
@@ -113,7 +122,9 @@ app.GameCreate = Backbone.View.extend({
             // Validation succeeded. Go to the edit game screen.
             app.currentView && app.currentView.remove();
             app.currentView = new app.GameEdit({ model: game });
-        }
+        }*/
+        app.currentView && app.currentView.remove();
+        app.currentView = new app.GameEdit({ model: game });
 
         return false;
     }
