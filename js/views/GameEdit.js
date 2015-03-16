@@ -5,11 +5,16 @@ app.GameEdit = Backbone.View.extend({
 
 	template: _.template($('#game-edit-template').html()),
 
+    saveTemplate: $('#game-save-template').html(),
+
 	events: {
-        '.score click': 'score'
+        'click .score-btn': 'score',
+        'click .undo-btn': 'undo',
+        'click .end-btn': 'endGame'
 	},
 
 	initialize: function(){
+        app.collapseNav();
         app.currentView = this;
         // Render the view
         this.$body = $("#body");
@@ -89,7 +94,7 @@ app.GameEdit = Backbone.View.extend({
                 .first()
                 .value();
 
-            var blue_score = _.chain(red_position.scores)
+            var blue_score = _.chain(blue_position.scores)
                 .filter(function(score){ return !score.own_goal; })
                 .value()
                 .length;
@@ -99,6 +104,7 @@ app.GameEdit = Backbone.View.extend({
                 red_id: red_position.user.id,
                 red_name: app.users.chain().where({ id: red_position.user.id }).first().value().get('name'),
                 position: mapping.name,
+                position_index: mapping.index,
                 blue_name: app.users.chain().where({ id: blue_position.user.id }).first().value().get('name'),
                 blue_id: blue_position.user.id,
                 blue_score: blue_score
@@ -119,9 +125,9 @@ app.GameEdit = Backbone.View.extend({
             .flatten()
             .map(function(p){
                 // Return array of scores
-                return _.map(p.scores, function(score){
+                return _.map(p.player.scores, function(score){
                     return {
-                        username: p.player.user.name,
+                        username: app.users.chain().where({ id: p.player.user.id }).first().value().get('name'),
                         time: score.time,
                         team: p.team
                     };
@@ -139,8 +145,6 @@ app.GameEdit = Backbone.View.extend({
             scores: scores
         };
 
-        console.log(m);
-
         return m;
     },
 
@@ -152,9 +156,74 @@ app.GameEdit = Backbone.View.extend({
 		return this;
 	},
 
-    score: function(){
-        // Add score
+    score: function(event){
+        var model = this.model;
+        var $button = $(event.currentTarget);
 
+        // Get team and position of player that scored
+        var index = parseInt($button.data("position_index"), 10);
+        var team_name = $button.data("team");
+
+        // Get player on that team at that position
+        var player = _.chain(model.get('teams'))
+            .where({ name: team_name })
+            .map(function(team){
+                return team.players;
+            })
+            .flatten()
+            .where({ position: index })
+            .first()
+            .value();
+
+        // Add score
+        player.scores.push({
+            time: new Date()
+        });
+        
         // Re-render
+        this.render();
+    },
+
+    // Removes the last score
+    undo: function(){
+        var model = this.model;
+
+        // Find the latest score
+        var last_score = _.chain(this.model.get('teams'))
+            .map(function(team){
+                // Get players with team
+                return _.map(team.players, function(player){
+                    return { team_name: team.name, player: player };
+                })
+            })
+            .flatten()
+            .map(function(p){
+                // Get scores with player and team information
+                return _.map(p.player.scores, function(score){
+                    return { team_name: p.team_name, position: p.player.position, time: score.time, score: score, scores: p.player.scores };
+                });
+            })
+            .flatten()
+            .sortBy('time')
+            .last()
+            .value();
+
+        if (last_score && last_score.scores){
+            // Get index we'll want to remove
+            var index = _.indexOf(last_score.scores, last_score.score);
+
+            // Remove the score
+            last_score.scores.pop(index);
+
+            // Render page 
+            this.render();
+        }
+    },
+
+    endGame: function(){
+        // Load save screen
+        this.$el.html(this.saveTemplate);
+
+        // Save model to server
     }
 });

@@ -10,8 +10,9 @@ app.UserView = Backbone.View.extend({
 	},
 
 	initialize: function(){
-		// Set current application view to this object 
-		app.currentView = this;
+        app.collapseNav();
+    	// Set current application view to this object 
+    	app.currentView = this;
 
         this.$body = $("#body");
         this.$header = $("#header");

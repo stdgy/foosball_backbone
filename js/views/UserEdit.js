@@ -10,6 +10,7 @@ app.UserEdit = Backbone.View.extend({
 	},
 
 	initialize: function(){
+        app.collapseNav();
         // Re-render table when collection changes
         //this.listenTo(this.model, 'change', this.render);
         app.currentView = this;

@@ -10,6 +10,7 @@ app.GameCreate = Backbone.View.extend({
 	},
 
 	initialize: function(){
+        app.collapseNav();
         // Create game model we'll be creating 
 
         // Attach to the game model's request and sync event

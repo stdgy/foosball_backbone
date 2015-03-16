@@ -5,6 +5,7 @@
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <div id="header">
@@ -235,7 +236,7 @@
                         <tr>
                             <th colspan="2" class="text-center">Red - <%- data.red_score_count %> pts</th>
                             <th class="text-center">
-                                <button type="submit" class="btn btn-default btn-xs end-game">End Game</button>
+                                <button type="submit" class="btn btn-default btn-xs end-btn">End Game</button>
                             </th>
                             <th colspan="2" class="text-center">Blue - <%- data.blue_score_count %> pts</th>
                         </tr>
@@ -250,7 +251,7 @@
                     <% _.each(data.positions, function(position){ %>
                     <tr>
                         <td>
-                            <button type="submit" class="btn btn-default btn-xs score-btn" data-id="<%- position.red_id %>">
+                            <button type="submit" class="btn btn-default btn-xs score-btn" data-position_index="<%- position.position_index %>" data-team="Red">
                                 <span class="glyphicon glyphicon-plus"></span>
                             </button> <%- position.red_score %>
                         </td>
@@ -258,7 +259,7 @@
                         <td><%- position.position %></td>
                         <td><%- position.blue_name %></td>
                         <td>
-                            <button type="submit" class="btn btn-default btn-xs score-btn" data-id="<%- position.blue_id %>">
+                            <button type="submit" class="btn btn-default btn-xs score-btn" data-position_index="<%- position.position_index %>" data-team="Blue">
                                 <span class="glyphicon glyphicon-plus"></span>
                             </button> <%- position.blue_score %>
                         </td>
@@ -273,7 +274,7 @@
                     <h3 class="panel-title">Additional Options</h3>
                 </div>
                 <div class="panel-body">
-                    <button type="submit" class="btn btn-default btn-xs">Undo</button>
+                    <button type="submit" class="btn btn-default btn-xs undo-btn">Undo</button>
                 </div>
             </div>
         </div>
@@ -303,11 +304,25 @@
         </div>
     </div>
 </script>
-<script src="js/models/user.js"></script>
+<script type="text/template" id="game-save-template">
+    <div class="container">
+        <div class="page-header">
+            <h1>Game <small>Ongoing</h1>
+        </div>
+        <div class="row">
+            <div class="text-center">
+                <h3>Saving Game</h3><span class="glyphicon glyphicon-refresh spin" aria-hidden="true"></span>
+            </div>
+        </div>
+    </div>
+</script>
+<script src="js/lib/collapseNav.js"></script>
+<script src="js/models/UserModel.js"></script>
 <script src="js/models/GameModel.js"></script>
-<script src="js/views/users_view.js"></script>
-<script src="js/views/user_table.js"></script>
-<script src="js/views/user_row.js"></script>
+<script src="js/models/ScoreModel.js"></script>
+<script src="js/views/UserView.js"></script>
+<script src="js/views/UserTable.js"></script>
+<script src="js/views/UserRow.js"></script>
 <script src="js/views/UserEdit.js"></script>
 <script src="js/views/GameEdit.js"></script>
 <script src="js/views/UserCreate.js"></script>
