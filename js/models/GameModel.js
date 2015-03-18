@@ -24,6 +24,24 @@ app.GameModel = Backbone.Model.extend({
 			return "Each team must have 4 players";
 		}
 
+		var positions = [1,2,3,4];
+		var red_positions = _.chain(red_team.players)
+			.map(function(player){
+				return player.position;
+			})
+			.value();
+
+		var blue_positions = _.chain(blue_team.players)
+			.map(function(player){
+				return player.position;
+			})
+			.value();
+
+		if (_.difference(red_positions, positions).length != 0 
+		 || _.difference(blue_positions, positions).length != 0){
+			return "Each team must have players in positions 1, 2, 3 and 4";
+		}
+
 		var red_users = _.chain(red_team.players)
 			.map(function(player){
 				return player.user;
