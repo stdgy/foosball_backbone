@@ -41,6 +41,16 @@ app.UserCreate = Backbone.View.extend({
         // Update model with new values
         this.model.set(values);
 
+        if (this.model.isValid() === false){
+            var $error = this.$el.find("#error")
+            $error
+                .find(".text").text(this.model.validationError).end()
+                .removeClass("hidden")
+                .addClass("show");
+                
+            return false;
+        }
+
         // Add model to collection
         app.users.add(this.model);
 
