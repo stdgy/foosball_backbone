@@ -124,6 +124,14 @@ app.GameCreate = Backbone.View.extend({
             app.currentView && app.currentView.remove();
             app.currentView = new app.GameEdit({ model: game });
         }*/
+
+        // Validate game 
+        if (game.isValid() === false){
+            // Display error
+            
+            return false;
+        }
+
         app.currentView && app.currentView.remove();
         app.currentView = new app.GameEdit({ model: game });
 
