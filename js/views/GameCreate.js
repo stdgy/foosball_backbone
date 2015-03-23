@@ -105,10 +105,6 @@ app.GameCreate = Backbone.View.extend({
     },
 
     createGame: function(event){
-        // Set button state
-        var $btn = $(event.target);
-        $btn.prop("disabled", true).text("Saving...");
-
         // Create new game model with values from view
         var game = this.parseValues();
 
@@ -128,7 +124,12 @@ app.GameCreate = Backbone.View.extend({
         // Validate game 
         if (game.isValid() === false){
             // Display error
-            
+            var $error = this.$el.find("#error")
+            $error
+                .find(".text").text(game.validationError).end()
+                .removeClass("hidden")
+                .addClass("show");
+
             return false;
         }
 
