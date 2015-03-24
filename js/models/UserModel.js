@@ -1,6 +1,8 @@
 var app = app || {};
 
 app.UserModel = Backbone.Model.extend({
+	urlRoot: 'api/users',
+
 	validate: function(attrs, options){
 		// Validation logic in here. 
 		if (attrs.name === undefined || $.trim(attrs.name) === ""){

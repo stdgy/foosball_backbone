@@ -5,7 +5,7 @@ var UserCollection = Backbone.Collection.extend({
 
 	comparator: 'name',
 	
-	url: '/users'
+	url: '/api/users'
 });
 
 app.users = new UserCollection();
