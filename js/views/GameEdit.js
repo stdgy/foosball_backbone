@@ -225,5 +225,15 @@ app.GameEdit = Backbone.View.extend({
         this.$el.html(this.saveTemplate);
 
         // Save model to server
+        var jqxhr = this.model.save();
+
+        jqxhr
+            .done(function(data){
+                // Saved successfully. Continue on to the post-game page.
+            })
+            .fail(function(jqxhr, textStatus){
+                // Error occurred while saving. Display error.
+            });
+
     }
 });
