@@ -51,11 +51,29 @@ app.UserCreate = Backbone.View.extend({
             return false;
         }
 
-        // Add model to collection
-        app.users.add(this.model);
+        // Disable button and show loading
 
-        // Forward on to list of users
-        app.FoosballRouter.navigate('users', { trigger: true });
+        // Save model to server
+        var jqxhr = this.model.save();
+
+        jqxhr
+            .done(function(data){
+                // Succcessfully saved. Go back to user list.
+                // Add model to collection
+                app.users.add(this.model);
+
+                // Forward on to list of users
+                app.FoosballRouter.navigate('users', { trigger: true });
+
+            })
+            .fail(function(jqxhr, textStatus){
+                // Error occurred. Report it.
+                var $error = this.$el.find("#error")
+                $error
+                    .find(".text").text(jqxhr.responseText).end()
+                    .removeClass("hidden")
+                    .addClass("show");
+            });
 
         return false;
     }
