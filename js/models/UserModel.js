@@ -1,7 +1,7 @@
 var app = app || {};
 
 app.UserModel = Backbone.Model.extend({
-	urlRoot: 'api/users',
+	urlRoot: 'http://api.std.gy/users',
 
 	validate: function(attrs, options){
 		// Validation logic in here. 

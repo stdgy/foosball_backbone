@@ -4,7 +4,7 @@ var app = app || {};
 // And each player will have scores and a user reference.
 app.GameModel = Backbone.Model.extend({
 	// Specify default URL location 
-	urlRoot: 'api/games',
+	urlRoot: 'http://api.std.gy/games',
 
 	validate: function(attrs, options){
 		// Validation logic in here. 
